@@ -5,19 +5,18 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Archeon.Items.Weapons
+namespace BismuthMod.Items.Weapons
 {
-	// Token: 0x020000AC RID: 172
-	public class PlasmaBow : ModItem
+
+	public class RainbowRecurve : ModItem
 	{
-		// Token: 0x0600030F RID: 783 RVA: 0x0001A098 File Offset: 0x00018298
+
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Plasma Bow");
+			DisplayName.SetDefault("Rainbow Recurve");
 			Tooltip.SetDefault("Shoot 2 plasma infused Arrows");
 		}
 
-		// Token: 0x06000310 RID: 784 RVA: 0x0001A0BC File Offset: 0x000182BC
 		public override void SetDefaults()
 		{
 			item.damage = 87;
@@ -28,25 +27,17 @@ namespace Archeon.Items.Weapons
 			item.useTime = 16;
 			item.useAnimation = 16;
 			item.useStyle = 5;
-			item.shoot = base.mod.ProjectileType("PlasmaArrowShot");
+			//item.shoot = base.mod.ProjectileType("PlasmaArrowShot");
 			item.useAmmo = AmmoID.Arrow;
-			item.knockBack = 1f;
+			item.knockBack = 5;
 			item.value = Item.buyPrice(0, 6, 75, 0);
-			item.value = Item.sellPrice(0, 6, 75, 0);
-			item.rare = 8;
+			item.rare = 3;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
-			item.shootSpeed = 18f;
+			item.shootSpeed = 18;
 		}
-
-		// Token: 0x06000311 RID: 785 RVA: 0x0001A1CB File Offset: 0x000183CB
-		public override Vector2? HoldoutOffset()
-		{
-			return new Vector2?(new Vector2(2f, 1f));
-		}
-
-		// Token: 0x06000312 RID: 786 RVA: 0x0001A1E4 File Offset: 0x000183E4
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		
+		/*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			for (int i = 0; i < 2; i++)
 			{
@@ -54,16 +45,12 @@ namespace Archeon.Items.Weapons
 				Projectile.NewProjectile(position.X, position.Y, vector.X, vector.Y, base.mod.ProjectileType("PlasmaArrowShot"), damage, knockBack, player.whoAmI, 0f, 0f);
 			}
 			return false;
-		}
+		}*/
 
-		// Token: 0x06000313 RID: 787 RVA: 0x0001A254 File Offset: 0x00018454
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(mod.ItemType("PlasmiteBar"), 14);
-			modRecipe.AddIngredient(mod.ItemType("ThaniteBow"));
-			modRecipe.AddIngredient(521, 10);
-			modRecipe.AddIngredient(520, 10);
+			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 12);
 			modRecipe.AddTile(134);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();

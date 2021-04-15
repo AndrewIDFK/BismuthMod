@@ -7,15 +7,14 @@ using static Terraria.ModLoader.ModContent;
 namespace BismuthMod.Items
 {
 
-	public class BismuthBar : ModItem
+	public class BismuthCrystal : ModItem
 	{
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bismuth Bar");
-			Tooltip.SetDefault("Vibrant and sturdy");
+			DisplayName.SetDefault("Bismuth Crystal");
+			Tooltip.SetDefault("Concentrated form of Bismuth");
 		}
-
 
 		public override void SetDefaults()
 		{
@@ -29,15 +28,13 @@ namespace BismuthMod.Items
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("BismuthBarTile");
 			item.maxStack = 99;
 		}
-
 
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(null, "BismuthOre", 5);
+			modRecipe.AddIngredient(null, "BismuthOre", 10);
 			modRecipe.AddTile(133);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();

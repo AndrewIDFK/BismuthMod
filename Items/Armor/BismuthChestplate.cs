@@ -3,15 +3,15 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Archeon.Items.Armor.RockSteele
+namespace BismuthMod.Items.Armor
 {
 	[AutoloadEquip(EquipType.Body)]
-	public class RockSteeleChestplate : ModItem
+	public class BismuthChestplate : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("RockSteele Chestplate");
+			DisplayName.SetDefault("Bismuth Chesplate");
 			Tooltip.SetDefault("5% increased melee damage and critical hit chance\nIncreases max life by 25");
 		}
 
@@ -19,8 +19,8 @@ namespace Archeon.Items.Armor.RockSteele
 		{
 			item.width = 18;
 			item.height = 18;
-			item.value = Item.sellPrice(0, 2, 80, 0);
-			item.rare = 6;
+			item.value = Item.buyPrice(0, 2, 80, 0);
+			item.rare = 3;
 			item.defense = 18;
 		}
 
@@ -34,7 +34,7 @@ namespace Archeon.Items.Armor.RockSteele
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(mod.ItemType("RockSteeleBar"), 20);
+			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 20);
 			modRecipe.AddTile(134);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();

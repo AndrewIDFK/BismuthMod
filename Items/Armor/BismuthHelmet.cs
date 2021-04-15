@@ -3,15 +3,15 @@ using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Archeon.Items.Armor.RockSteele
+namespace BismuthMod.Items.Armor
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class RockSteeleHelmet : ModItem
+	public class BismuthHelmet : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("RockSteele Helmet");
+			DisplayName.SetDefault("Bismuth Helmet");
 			Tooltip.SetDefault("You see better in the dark\n8% increased melee damage and critical hit chance");
 		}
 
@@ -19,8 +19,8 @@ namespace Archeon.Items.Armor.RockSteele
 		{
 			item.width = 18;
 			item.height = 18;
-			item.value = Item.sellPrice(0, 2, 60, 0);
-			item.rare = 6;
+			item.value = Item.buyPrice(0, 2, 60, 0);
+			item.rare = 3;
 			item.defense = 20;
 		}
 
@@ -33,7 +33,7 @@ namespace Archeon.Items.Armor.RockSteele
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == base.mod.ItemType("RockSteeleChestplate") && legs.type == base.mod.ItemType("RockSteeleLeggings");
+			return body.type == base.mod.ItemType("BismuthChestplate") && legs.type == base.mod.ItemType("BismuthLeggings");
 		}
 
 		public override void UpdateArmorSet(Player player)
@@ -48,7 +48,7 @@ namespace Archeon.Items.Armor.RockSteele
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(mod.ItemType("RockSteeleBar"), 17);
+			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 17);
 			modRecipe.AddTile(134);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
