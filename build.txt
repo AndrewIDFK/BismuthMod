@@ -1,3 +1,4 @@
-displayName = Rainbow Bismuth
+displayName = Crystallized Rainbow
 author = Nutty. and AndrewIDFK
 version = 0.1
+includePDB = true
