@@ -14,38 +14,43 @@ namespace BismuthMod.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Rainbow Recurve");
-			Tooltip.SetDefault("Shoot 2 plasma infused Arrows");
+			Tooltip.SetDefault("Fires shattering arrows");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 87;
+			item.damage = 28;
 			item.noMelee = true;
 			item.ranged = true;
-			item.width = 69;
-			item.height = 40;
-			item.useTime = 16;
-			item.useAnimation = 16;
+			item.width = 48;
+			item.height = 54;
+			item.useTime = 18;
+			item.useAnimation = 18;
 			item.useStyle = 5;
-			//item.shoot = base.mod.ProjectileType("PlasmaArrowShot");
+			item.shoot = ProjectileID.Shuriken;
 			item.useAmmo = AmmoID.Arrow;
 			item.knockBack = 5;
-			item.value = Item.buyPrice(0, 6, 75, 0);
+			item.value = Item.buyPrice(0, 0, 75, 0);
 			item.rare = 3;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;
-			item.shootSpeed = 18;
+			item.shootSpeed = 13;
 		}
-		
-		/*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+
+		public override Vector2? HoldoutOffset()
 		{
-			for (int i = 0; i < 2; i++)
+			return new Vector2?(new Vector2(2f, 1f));
+		}
+
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+			if (type == ProjectileID.WoodenArrowFriendly)
 			{
-				Vector2 vector = Utils.RotatedByRandom(new Vector2(speedX, speedY), (double)MathHelper.ToRadians(9f));
-				Projectile.NewProjectile(position.X, position.Y, vector.X, vector.Y, base.mod.ProjectileType("PlasmaArrowShot"), damage, knockBack, player.whoAmI, 0f, 0f);
+				type = mod.ProjectileType("BismuthRecurveArrow");
 			}
+			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
 			return false;
-		}*/
+		}
 
 		public override void AddRecipes()
 		{

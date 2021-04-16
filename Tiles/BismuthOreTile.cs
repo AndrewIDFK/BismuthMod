@@ -22,8 +22,8 @@ namespace BismuthMod.Tiles
 			ModTranslation modTranslation = CreateMapEntryName(null);
 			modTranslation.SetDefault("Bismuth Ore");
 			AddMapEntry(new Color(250, 225, 74), modTranslation);
-			this.minPick = 70;
-			this.mineResist = 6;
+			this.minPick = 65;
+			this.mineResist = 1.5f;
 			this.dustType = 19;
 			this.soundType = 21;
 			Main.tileSpelunker[(int)Type] = true;
@@ -36,9 +36,9 @@ namespace BismuthMod.Tiles
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 		{
-			r = 0.250f;
-			g = 0.225f;
-			b = 0.074f;
+			r = 0.250f / 2;
+			g = 0.225f / 2;
+			b = 0.074f / 2;
 		}
 	}
 }
