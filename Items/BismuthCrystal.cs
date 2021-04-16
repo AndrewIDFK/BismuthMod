@@ -13,7 +13,7 @@ namespace BismuthMod.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bismuth Crystal");
-			Tooltip.SetDefault("Concentrated form of Bismuth");
+			Tooltip.SetDefault("'Concentrated form of Bismuth'");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace BismuthMod.Items
 			item.useAnimation = 15;
 			item.rare = 3;
 			item.useStyle = 1;
-			item.value = Item.buyPrice(0, 1, 45, 0);
+			item.value = Item.buyPrice(0, 0, 70, 0);
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.consumable = true;

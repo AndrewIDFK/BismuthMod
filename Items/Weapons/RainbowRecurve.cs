@@ -30,7 +30,7 @@ namespace BismuthMod.Items.Weapons
 			item.shoot = ProjectileID.Shuriken;
 			item.useAmmo = AmmoID.Arrow;
 			item.knockBack = 5;
-			item.value = Item.buyPrice(0, 0, 75, 0);
+			item.value = Item.buyPrice(0, 0, 60, 0);
 			item.rare = 3;
 			item.UseSound = SoundID.Item5;
 			item.autoReuse = true;

@@ -6,13 +6,13 @@ using static Terraria.ModLoader.ModContent;
 namespace BismuthMod.Items.Armor
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class BismuthHelmet : ModItem
+	public class BismuthMask : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Bismuth Helmet");
-			Tooltip.SetDefault("Increased melee damage ");
+			DisplayName.SetDefault("Bismuth Mask");
+			Tooltip.SetDefault("Increased summon damage");
 		}
 
 		public override void SetDefaults()
@@ -21,12 +21,12 @@ namespace BismuthMod.Items.Armor
 			item.height = 18;
 			item.value = Item.buyPrice(0, 0, 60, 0);
 			item.rare = 3;
-			item.defense = 8;
+			item.defense = 4;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage += 0.06f;
+			player.minionDamage += 0.08f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -36,7 +36,7 @@ namespace BismuthMod.Items.Armor
 
 		public override void UpdateArmorSet(Player player)
 		{
-			//Surrounds player in a bubble, shields you from attacks below 50 damage  Shield wont be broken if below 5 damage? 10 second cooldown (bubble looks like an actual bubble uwu)
+			//When summons attack there is a chance to shoot bismuth shards
 		}
 
 		public override void AddRecipes()

@@ -13,7 +13,7 @@ namespace BismuthMod.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bismuth Bar");
-			Tooltip.SetDefault("Vibrant and sturdy");
+			Tooltip.SetDefault("'Vibrant and sturdy'");
 		}
 
 
@@ -25,7 +25,7 @@ namespace BismuthMod.Items
 			item.useAnimation = 15;
 			item.rare = 3;
 			item.useStyle = 1;
-			item.value = Item.buyPrice(0, 1, 45, 0);
+			item.value = Item.buyPrice(0, 0, 35, 0);
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.consumable = true;
@@ -37,7 +37,7 @@ namespace BismuthMod.Items
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(null, "BismuthOre", 5);
+			modRecipe.AddIngredient(null, "BismuthOre", 4);
 			modRecipe.AddTile(133);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();

@@ -13,7 +13,7 @@ namespace BismuthMod.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bismuth Ore");
-			Tooltip.SetDefault("Sparkling with color");
+			Tooltip.SetDefault("'Sparkling with color'");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace BismuthMod.Items
 			item.useAnimation = 15;
 			item.rare = 3;
 			item.useStyle = 1;
-			item.value = Item.buyPrice(0, 0, 40, 0);
+			item.value = Item.buyPrice(0, 0, 2, 0);
 			item.autoReuse = true;
 			item.consumable = true;
 			item.createTile = mod.TileType("BismuthOreTile");

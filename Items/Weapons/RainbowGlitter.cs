@@ -25,21 +25,23 @@ namespace BismuthMod.Items.Weapons
 			item.useAnimation = 25;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = Item.buyPrice(0, 1, 40, 0);
+			item.value = Item.buyPrice(0, 0, 60, 0);
 			item.rare = 3;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.useTurn = true;
 		}
 
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-		{
-			if (Utils.NextBool(Main.rand, 3))
+		/*public override void MeleeEffects(Player player, Rectangle hitbox) 
+		{	
+			if (Main.rand.NextBool(3)) 
 			{
-				//Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, base.mod.DustType("SteeleDust"), 0f, 0f, 0, default(Color), 1f);
-				
+				//Emit dusts when the sword is swung
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<Sparkle>());
 			}
-		}
+		} */
+				
+		
 		
 		public override void AddRecipes()
 		{
