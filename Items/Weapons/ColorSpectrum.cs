@@ -26,7 +26,7 @@ namespace BismuthMod.Items.Weapons
 			item.useTime = 18;
 			item.useAnimation = 18;
 			item.useStyle = 5;
-			//Item.staff[item.type] = true;
+			Item.staff[item.type] = true;
 			item.noMelee = true;
 			item.knockBack = 4;
 			item.value = Item.buyPrice(0, 0, 60, 0);
@@ -42,7 +42,7 @@ namespace BismuthMod.Items.Weapons
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 10);
-			modRecipe.AddIngredient(mod.ItemType("BismuthCrystal"), 4);
+			modRecipe.AddIngredient(mod.ItemType("Diamond"), 6);
 			modRecipe.AddTile(412);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();

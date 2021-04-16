@@ -28,7 +28,7 @@ namespace BismuthMod.Items.Accessories
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(null, "BismuthBar", 8);
-			modRecipe.AddIngredient(null, "BismuthCrystal", 1);
+			modRecipe.AddIngredient(mod.ItemType("Diamond"), 4);
 			modRecipe.AddTile(133);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
