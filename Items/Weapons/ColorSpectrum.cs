@@ -43,7 +43,7 @@ namespace BismuthMod.Items.Weapons
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 10);
 			modRecipe.AddIngredient(mod.ItemType("Diamond"), 6);
-			modRecipe.AddTile(412);
+			modRecipe.AddTile(TileID.Anvils);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
 		}

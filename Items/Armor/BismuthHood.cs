@@ -43,7 +43,7 @@ namespace BismuthMod.Items.Armor
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 17);
-			modRecipe.AddTile(134);
+			modRecipe.AddTile(TileID.Anvils);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
 		}

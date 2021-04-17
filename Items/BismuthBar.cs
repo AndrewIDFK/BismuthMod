@@ -38,7 +38,7 @@ namespace BismuthMod.Items
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(null, "BismuthOre", 4);
-			modRecipe.AddTile(133);
+			modRecipe.AddTile(TileID.Furnaces);
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
 		}

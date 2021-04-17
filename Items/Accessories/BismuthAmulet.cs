@@ -27,9 +27,9 @@ namespace BismuthMod.Items.Accessories
 		public override void AddRecipes()
 		{
 			ModRecipe modRecipe = new ModRecipe(mod);
-			modRecipe.AddIngredient(null, "BismuthBar", 8);
-			modRecipe.AddIngredient(mod.ItemType("Diamond"), 4);
-			modRecipe.AddTile(133);
+			modRecipe.AddIngredient(null, "BismuthBar", 8); // the other way to add a modded ingredient is modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 8);. There is also a third way and a fourth way, but those are dates versions eventhough some people still use them.
+			modRecipe.AddIngredient(ItemID.Diamond, 4);
+			modRecipe.AddTile(using); //Need to be near an Anvil to craft it.
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
 		}

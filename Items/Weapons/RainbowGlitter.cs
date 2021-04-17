@@ -19,8 +19,8 @@ namespace BismuthMod.Items.Weapons
 		{
 			item.damage = 30;
 			item.melee = true;
-			item.width = 40;
-			item.height = 40;
+			item.width = 56;
+			item.height = 62;
 			item.useTime = 25;
 			item.useAnimation = 25;
 			item.useStyle = 1;
