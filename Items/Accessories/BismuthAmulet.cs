@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -29,7 +30,7 @@ namespace BismuthMod.Items.Accessories
 			ModRecipe modRecipe = new ModRecipe(mod);
 			modRecipe.AddIngredient(null, "BismuthBar", 8); // the other way to add a modded ingredient is modRecipe.AddIngredient(mod.ItemType("BismuthBar"), 8);. There is also a third way and a fourth way, but those are dates versions eventhough some people still use them.
 			modRecipe.AddIngredient(ItemID.Diamond, 4);
-			modRecipe.AddTile(using); //Need to be near an Anvil to craft it.
+			modRecipe.AddTile(TileID.Anvils); //Need to be near an Anvil to craft it.
 			modRecipe.SetResult(this, 1);
 			modRecipe.AddRecipe();
 		}

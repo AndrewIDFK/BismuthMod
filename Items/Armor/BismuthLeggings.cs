@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -12,7 +13,7 @@ namespace BismuthMod.Items.Armor
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Bismuth Leggings");
-			Tooltip.SetDefault("Increases critical chance by 4% \n Increases life regen by 1");
+			Tooltip.SetDefault("7% increased movement speed");
 		}
 
 		public override void SetDefaults()
@@ -26,11 +27,7 @@ namespace BismuthMod.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.lifeRegen += 1;
-			player.rangedCrit += 4;
-			player.meleeCrit += 4;
-			player.magicCrit += 4;
-			player.thrownCrit += 4;
+			player.moveSpeed += 0.07f;
 		}
 
 		public override void AddRecipes()

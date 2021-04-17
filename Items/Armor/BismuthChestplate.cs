@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -12,7 +13,7 @@ namespace BismuthMod.Items.Armor
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Bismuth Chestplate");
-			Tooltip.SetDefault("Increases critical chance by 4% \n Increases life regen by 1");
+			Tooltip.SetDefault("4% increased critical strike chance \nSlightly increased life regen");
 		}
 
 		public override void SetDefaults()
