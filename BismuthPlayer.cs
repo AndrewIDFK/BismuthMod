@@ -55,8 +55,7 @@ namespace BismuthMod
 							
 							//Here we add a cooldown to the effect. Making it only work after a 10 second cooldown.
 							bismuthMeleeSetCD = 600; //Code at the bottom of this file explains why it's 600 and how it decreases.
-							
-							
+									
 							//This is needed here, otherwise it doesn't work. Annoying stuff.
 							return false;
 						}
@@ -80,6 +79,56 @@ namespace BismuthMod
 		{
 			//Stuff in this happens when player hits an enemy with a projectile, like Sword Beams, Magic Bolts, Arrows, Bullets and the likes.
 		}
+		
+		public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+		{
+			if (bismuthMeleeSet && bismuthMeleeSetCD == 600) 
+			{
+				for (int i = 0; i < 14; i++)
+				{
+					int num4 = Dust.NewDust(player.Center, player.width, player.height, 235, 0f, 0f, 100, Main.DiscoColor, 0.5f);
+					Main.dust[num4].scale = 0.54f + (float)Main.rand.Next(5) * 0.05f;
+					Main.dust[num4].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
+					Main.dust[num4].noGravity = false;
+					Main.dust[num4].velocity *= 5;
+					Main.dust[num4].position = player.Center + new Vector2(0f, -(float)player.height / 2f).RotatedBy((double)player.direction, default(Vector2)) * 1.1f;
+					num4 = Dust.NewDust(player.Center, player.width, player.height, 235, 0f, 0f, 100, Main.DiscoColor, 0.5f);
+					Main.dust[num4].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
+					Main.dust[num4].noGravity = false;
+					Main.dust[num4].velocity *= 5;
+					Main.dust[num4].position = player.Center + new Vector2(0f, -(float)player.height / 2f - 6f).RotatedBy((double)player.direction, default(Vector2)) * 1.1f;
+				}
+			}
+		}
+		
+		public static readonly PlayerLayer DrawStuff = new PlayerLayer("BismuthMod", "DrawStuff", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo) 
+		{
+            //In here we draw a layer in the "background", this is where we actually make the shield sprite spawn ontop of the player.
+            if (drawInfo.shadow != 0f) 
+			{
+				return;
+			}
+            Player drawPlayer = drawInfo.drawPlayer;
+            Mod mod = ModLoader.GetMod("BismuthMod");
+            BismuthPlayer mPlayer = drawPlayer.GetModPlayer<BismuthPlayer>();
+            
+			if(mPlayer.bismuthMeleeSet && mPlayer.bismuthMeleeSetCD == 0)
+			{
+				Texture2D shieldTexture = mod.GetTexture("Textures/BismuthMeleeShield");
+				int drawX = (int)(drawInfo.position.X + drawPlayer.width / 2f - Main.screenPosition.X);
+				int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 2f - Main.screenPosition.Y);
+				DrawData data = new DrawData(shieldTexture, new Vector2(drawX, drawY), new Rectangle(0, 0, shieldTexture.Width, shieldTexture.Height), Main.DiscoColor * 0.2f, 0f, new Vector2(shieldTexture.Width / 2f, shieldTexture.Height / 2f), 1f, SpriteEffects.None, 0);
+				Main.playerDrawData.Add(data);
+			}
+        });
+		
+		public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            layers.Insert(0, DrawStuff);
+            layers.Add(DrawStuff);
+            DrawStuff.visible = true;
+        }
+
 		
 		public override void PostUpdateMiscEffects()
 		{

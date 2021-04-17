@@ -62,10 +62,10 @@ namespace BismuthMod.Items.Armor
 			player.armorEffectDrawShadow = false; // We'll go through these on Discord together, it's just asthetic choices for armor set shadows.
 			player.armorEffectDrawShadowSubtle = false;
 			player.armorEffectDrawOutlines = false;
-			player.armorEffectDrawShadowLokis = true;
-			player.armorEffectDrawShadowBasilisk = false;
+			player.armorEffectDrawShadowLokis = false;
+			player.armorEffectDrawShadowBasilisk = true;
 			player.armorEffectDrawOutlinesForbidden = false;
-			player.armorEffectDrawShadowEOCShield = true;
+			player.armorEffectDrawShadowEOCShield = false;
 		}
 	}
 }
