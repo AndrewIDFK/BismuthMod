@@ -38,6 +38,8 @@ namespace BismuthMod.Items.Armor
 		public override void UpdateArmorSet(Player player)
 		{
 			//If hitting an enemy there is a random chance you get 5 mana back  Increases fire rate of magic weapons by 10% for 2-3 seconds
+			//player.setBonus = "Encases the player in a Bismuth Shield which protects the player\nOnly protects from attacks that are stronger than 5 and weaker than 50";
+			player.GetModPlayer<BismuthPlayer>().bismuthMagicSet = true;		
 		}
 
 		public override void AddRecipes()
@@ -60,4 +62,4 @@ namespace BismuthMod.Items.Armor
 			player.armorEffectDrawShadowEOCShield = true;
 		}
 	}
-}
+} // we in the hood

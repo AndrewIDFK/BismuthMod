@@ -18,10 +18,14 @@ namespace BismuthMod
 	{
 		public bool bismuthMeleeSet; //Doing this creates "bismuthMeleeSet" and makes it into a true/false statement.
 		public int bismuthMeleeSetCD; //Doing this creates "bismuthMeleeSetCD" and makes it into a number pretty much. There's more to it but can't explain with quick sentence.
+		public bool bismuthMagicSet;
+		public bool bismuthMagicHorny;
 		
 		public override void ResetEffects()
 		{
 			bismuthMeleeSet = false; //Makes "bismuthMeleeSet" false when bismuthMeleeSet isn't being set to true. (Having a full melee set equipped makes "bismuthMeleeSet" true, having this here makes "bismuthMeleeSet" false once the full set isn't equipped anymore.)
+			bismuthMagicSet = false;
+			bismuthMagicHorny = false;
 		}
 		
 		
@@ -128,6 +132,14 @@ namespace BismuthMod
             layers.Add(DrawStuff);
             DrawStuff.visible = true;
         }
+		public override void OnConsumeMana (Item item, int manaConsumed)
+		{
+			if (bismuthMagicHorny == true)
+			{
+				item.useTime -= item.useTime - (item.useTime / 5);
+				item.useAnimation -= item.useAnimation - (item.useAnimation / 5);
+			}
+		}
 
 		
 		public override void PostUpdateMiscEffects()
