@@ -21,6 +21,7 @@ namespace BismuthMod
 		public bool bismuthMagicSet;
 		public bool bismuthMagicHorny;
 		
+		int timer;
 		public override void ResetEffects()
 		{
 			bismuthMeleeSet = false; //Makes "bismuthMeleeSet" false when bismuthMeleeSet isn't being set to true. (Having a full melee set equipped makes "bismuthMeleeSet" true, having this here makes "bismuthMeleeSet" false once the full set isn't equipped anymore.)
@@ -59,7 +60,7 @@ namespace BismuthMod
 							
 							//Here we add a cooldown to the effect. Making it only work after a 10 second cooldown.
 							bismuthMeleeSetCD = 600; //Code at the bottom of this file explains why it's 600 and how it decreases.
-									
+						
 							//This is needed here, otherwise it doesn't work. Annoying stuff.
 							return false;
 						}
@@ -82,6 +83,15 @@ namespace BismuthMod
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
 		{
 			//Stuff in this happens when player hits an enemy with a projectile, like Sword Beams, Magic Bolts, Arrows, Bullets and the likes.
+		}
+		
+		public override float UseTimeMultiplier(Item item)
+		{		
+			if(item.magic && bismuthMagicHorny == true)
+			{
+				return 4.5f;
+			}
+			else return 1f;
 		}
 		
 		public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
@@ -141,7 +151,7 @@ namespace BismuthMod
 			}
 		}
 
-		
+		int magicSetTimer = 0;
 		public override void PostUpdateMiscEffects()
 		{
 			//Everything in here happens once every tick. 1 second = 60 ticks. Usually used to enable some effects or make cooldowns. Used for all bunch of stuff though.
@@ -153,6 +163,16 @@ namespace BismuthMod
 			if(bismuthMeleeSetCD < 0) //Everything inside this happens when "bismuthMeleeSetCD" is less than 0, so basically all the negative numbers. In this we force "bismuthMeleeSetCD" to 0 if it's less than 0. Just a safter function that most of the time isn't needed.
 			{
 				bismuthMeleeSetCD = 0;
+			}
+			
+			if(bismuthMagicHorny == true)
+			{
+				magicSetTimer++;
+			}
+			if(magicSetTimer >= Main.rand.Next(110, 170))
+			{
+				bismuthMagicHorny = false;
+				magicSetTimer = 0;
 			}
 		}	
 	}

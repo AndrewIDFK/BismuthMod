@@ -11,7 +11,7 @@ namespace BismuthMod
 	{
 		public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit) 
 		{
-			Player Cock = Main.player[projectile.owner];
+			Player player = Main.player[projectile.owner];
 			if (projectile.owner == Main.myPlayer) //This is used to fix massive problems in multiplayer. Makes it so that only you get the effects that happen inside this "if" hook, not your friends.
 			{			
 				if (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type]) //Stuff in this happens only when a minion OR a Minion's projectile hits an NPC.
@@ -20,14 +20,12 @@ namespace BismuthMod
 				}
 				if (projectile.magic)
 				{
-					if 	(Cock.GetModPlayer<BismuthPlayer>().bismuthMagicSet == true)
+					if 	(player.GetModPlayer<BismuthPlayer>().bismuthMagicSet == true)
 					{
-						if (Main.rand.Next (13) == 0)
+						if (Main.rand.Next(14) == 0)
 						{
-							Cock.statMana += 5;
-							Cock.GetModPlayer<BismuthPlayer>().bismuthMagicHorny = true;
-							Item.useTime -= item.useTime - (item.useTime / 5);
-							item.useAnimation -= item.useAnimation - (item.useAnimation / 5);
+							player.statMana += 150;
+							player.GetModPlayer<BismuthPlayer>().bismuthMagicHorny = true;
 						}
 					}
 				}
