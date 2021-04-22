@@ -16,17 +16,28 @@ namespace BismuthMod
 {
 	public class BismuthPlayer : ModPlayer //In this file we make most of the custom effects for acessories, armor and other equippables/consumables.
 	{
+		//MISC STUFF
+		public int oldHeldItem;
+		public bool shootsArrow; // check if shooting bang-bang arrows
+		public bool shootsBullet; // check if shooting pew-pew bullets
+		
+		//MELEE SET
 		public bool bismuthMeleeSet; //Doing this creates "bismuthMeleeSet" and makes it into a true/false statement.
 		public int bismuthMeleeSetCD; //Doing this creates "bismuthMeleeSetCD" and makes it into a number pretty much. There's more to it but can't explain with quick sentence.
+		
+		//MAGIC SET
 		public bool bismuthMagicSet;
 		public bool bismuthMagicHorny;
+		
+		//RANGED SET
+		public bool bismuthRangedSet;
 		
 		int timer;
 		public override void ResetEffects()
 		{
 			bismuthMeleeSet = false; //Makes "bismuthMeleeSet" false when bismuthMeleeSet isn't being set to true. (Having a full melee set equipped makes "bismuthMeleeSet" true, having this here makes "bismuthMeleeSet" false once the full set isn't equipped anymore.)
 			bismuthMagicSet = false;
-			bismuthMagicHorny = false;
+			bismuthRangedSet = false;
 		}
 		
 		
@@ -85,13 +96,20 @@ namespace BismuthMod
 			//Stuff in this happens when player hits an enemy with a projectile, like Sword Beams, Magic Bolts, Arrows, Bullets and the likes.
 		}
 		
-		public override float UseTimeMultiplier(Item item)
-		{		
-			if(item.magic && bismuthMagicHorny == true)
+		public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) 
+		{
+			if(item.ranged && bismuthRangedSet)
 			{
-				return 4.5f;
+				if(item.useAmmo == AmmoID.Arrow)
+				{
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("BismuthRangedArrow"), damage / 2, knockBack / 4, player.whoAmI, 0f, 0f);
+				}
+				if(item.useAmmo == AmmoID.Bullet)
+				{
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("BismuthRangedBullet"), damage / 2, knockBack / 4, player.whoAmI, 0f, 0f);
+				}
 			}
-			else return 1f;
+			return true;
 		}
 		
 		public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
@@ -142,13 +160,32 @@ namespace BismuthMod
             layers.Add(DrawStuff);
             DrawStuff.visible = true;
         }
+		int lockNR = 0;
 		public override void OnConsumeMana (Item item, int manaConsumed)
 		{
-			if (bismuthMagicHorny == true)
+			if(item.magic)
 			{
-				item.useTime -= item.useTime - (item.useTime / 5);
-				item.useAnimation -= item.useAnimation - (item.useAnimation / 5);
-			}
+				if (bismuthMagicHorny == true)
+				{
+					if(lockNR == 0)
+					{
+						item.useTime = item.useTime - ((item.useTime * 2) / 10);
+						item.useAnimation = item.useAnimation - ((item.useAnimation * 2) / 10);
+						lockNR = 1;
+						Main.NewText(item.useTime + " Fire-rate buff active useTime number");
+					}
+				}
+				else
+				{
+					if(lockNR == 1)
+					{
+						item.useTime = item.useTime + ((item.useTime * 2) / 10);
+						item.useAnimation = item.useAnimation + ((item.useAnimation * 2) / 10);
+						lockNR = 0;
+						Main.NewText(item.useTime + " Fire-rate buff deactive useTime number");
+					}
+				}
+			}	
 		}
 
 		int magicSetTimer = 0;
@@ -171,9 +208,18 @@ namespace BismuthMod
 			}
 			if(magicSetTimer >= Main.rand.Next(110, 170))
 			{
+				Main.NewText("Fire-rate Stop");
 				bismuthMagicHorny = false;
 				magicSetTimer = 0;
 			}
+			
+			if (player.HeldItem.type != oldHeldItem)
+			{
+				bismuthMagicHorny = false;
+				magicSetTimer = 0;
+				lockNR = 0;
+			}
+			oldHeldItem = player.HeldItem.type;
 		}	
 	}
 }

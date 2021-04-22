@@ -32,12 +32,13 @@ namespace BismuthMod.Items.Armor
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == base.mod.ItemType("BismuthChestplate") && legs.type == base.mod.ItemType("BismuthLeggings");
+			return body.type == mod.ItemType("BismuthChestplate") && legs.type == mod.ItemType("BismuthLeggings");
 		}
 
 		public override void UpdateArmorSet(Player player)
 		{
 			//When you shoot bow/gun theres 2 bismuth shards to the side
+			player.GetModPlayer<BismuthPlayer>().bismuthRangedSet = true;  // new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
 		}
 
 		public override void AddRecipes()

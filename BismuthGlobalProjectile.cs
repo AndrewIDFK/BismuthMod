@@ -13,21 +13,30 @@ namespace BismuthMod
 		{
 			Player player = Main.player[projectile.owner];
 			if (projectile.owner == Main.myPlayer) //This is used to fix massive problems in multiplayer. Makes it so that only you get the effects that happen inside this "if" hook, not your friends.
-			{			
+			{		
+				//MINION AND THEIR PROJECTILES
 				if (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type]) //Stuff in this happens only when a minion OR a Minion's projectile hits an NPC.
 				{
 					//Add random chance for minions to do a special thing when they hit enemy while bismuth mask set is equipped.
 				}
+				
+				//MAGIC PROJECTILES
 				if (projectile.magic)
 				{
 					if 	(player.GetModPlayer<BismuthPlayer>().bismuthMagicSet == true)
 					{
-						if (Main.rand.Next(14) == 0)
+						if (Main.rand.Next(6) == 0)
 						{
 							player.statMana += 150;
 							player.GetModPlayer<BismuthPlayer>().bismuthMagicHorny = true;
 						}
 					}
+				}
+				
+				//RANGED PROJECTILES
+				if (projectile.ranged)
+				{
+					
 				}
 			}
 		}

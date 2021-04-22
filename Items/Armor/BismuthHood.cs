@@ -32,7 +32,7 @@ namespace BismuthMod.Items.Armor
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == base.mod.ItemType("BismuthChestplate") && legs.type == base.mod.ItemType("BismuthLeggings");
+			return body.type == mod.ItemType("BismuthChestplate") && legs.type == mod.ItemType("BismuthLeggings");
 		}
 
 		public override void UpdateArmorSet(Player player)
